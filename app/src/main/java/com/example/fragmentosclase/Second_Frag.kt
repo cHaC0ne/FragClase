@@ -28,6 +28,7 @@ class Second_Frag : Fragment() {
                 lista.put(b!!.etArticulo.text.toString(), b!!.etPrecio.text.toString())
                 b!!.etArticulo.text.clear()
                 b!!.etPrecio.text.clear()
+                b!!.tvCompra.text = lista.toString()
                 // msj(lista.toString())
             } else {
                 msj("Todos los campos son obligatorios")
