@@ -11,8 +11,8 @@ import com.example.fragmentosclase.databinding.FragmentFirstBinding
 
 
 class First_Frag : Fragment() {
-    private var b:FragmentFirstBinding? = null
-    private val binding get() = b!!
+    private lateinit var b:FragmentFirstBinding
+
 
 
     private val dados = arrayOf<Int>(
@@ -27,28 +27,28 @@ class First_Frag : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        b= FragmentFirstBinding.inflate(layoutInflater)
+    ): View {
+        b = FragmentFirstBinding.inflate(layoutInflater)
 
-        b!!.ivDado1.setOnClickListener{
+        b.ivDado1.setOnClickListener{
             val dado1 = (1..6).random()
             val dado2 = (1..6).random()
-            b!!.ivDado1.setImageResource(dados[dado1 -1])
-            b!!.ivDado2.setImageResource(dados[dado2 -1])
-            b!!.tvTotal.text = (dado1 + dado2).toString()
+            b.ivDado1.setImageResource(dados[dado1 -1])
+            b.ivDado2.setImageResource(dados[dado2 -1])
+            b.tvTotal.text = (dado1.plus(dado2)).toString()
 
 
         }
         b!!.ivDado2.setOnClickListener{
             val dado1 = (1..6).random()
             val dado2 = (1..6).random()
-            b!!.ivDado1.setImageResource(dados[dado1 -1])
-            b!!.ivDado2.setImageResource(dados[dado2 -1])
-            b!!.tvTotal.text = (dado1 + dado2).toString()
+            b.ivDado1.setImageResource(dados[dado1 -1])
+            b.ivDado2.setImageResource(dados[dado2 -1])
+            b.tvTotal.text = (dado1.plus(dado2)).toString()
         }
 
-        FragmentFirstBinding.inflate(inflater, container, false)
-        return b!!.root
+       // FragmentFirstBinding.inflate(inflater, container, false)
+        return b.root
     }
 
 
