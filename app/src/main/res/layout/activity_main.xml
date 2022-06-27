@@ -18,14 +18,16 @@
             android:name="com.example.fragmentosclase.First_Frag"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            tools:layout="@layout/fragment_first_"/>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView2"
             android:name="com.example.fragmentosclase.Second_Frag"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            tools:layout="@layout/fragment_second_"/>
     </LinearLayout>
 
 </LinearLayout>
