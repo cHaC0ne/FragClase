@@ -5,14 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 
 import com.example.fragmentosclase.databinding.FragmentFirstBinding
 
 
 
 class First_Frag : Fragment() {
-    private lateinit var b:FragmentFirstBinding
-
+    private lateinit var b: FragmentFirstBinding
+    val cont = 0
 
 
     private val dados = arrayOf<Int>(
@@ -30,29 +32,39 @@ class First_Frag : Fragment() {
     ): View {
         b = FragmentFirstBinding.inflate(layoutInflater)
 
-        b.ivDado1.setOnClickListener{
+        b.ivDado1.setOnClickListener {
             val dado1 = (1..6).random()
             val dado2 = (1..6).random()
-            b.ivDado1.setImageResource(dados[dado1 -1])
-            b.ivDado2.setImageResource(dados[dado2 -1])
+            b.ivDado1.setImageResource(dados[dado1 - 1])
+            b.ivDado2.setImageResource(dados[dado2 - 1])
             b.tvTotal.text = (dado1.plus(dado2)).toString()
 
 
         }
-        b!!.ivDado2.setOnClickListener{
+        b.ivDado2.setOnClickListener {
             val dado1 = (1..6).random()
             val dado2 = (1..6).random()
-            b.ivDado1.setImageResource(dados[dado1 -1])
-            b.ivDado2.setImageResource(dados[dado2 -1])
+            b.ivDado1.setImageResource(dados[dado1 - 1])
+            b.ivDado2.setImageResource(dados[dado2 - 1])
             b.tvTotal.text = (dado1.plus(dado2)).toString()
         }
 
-       // FragmentFirstBinding.inflate(inflater, container, false)
+
+
+
+        // FragmentFirstBinding.inflate(inflater, container, false)
         return b.root
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        b.tvTotal.setOnClickListener {
+            setFragmentResult("Paquete1", bundleOf("Primer dato" to b.tvTotal.text.toString()))
 
-
+        }
+    }
 }
+
+
 
 
 

@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import com.example.fragmentosclase.databinding.FragmentFirstBinding
 import com.example.fragmentosclase.databinding.FragmentSecondBinding
 
@@ -15,6 +17,15 @@ class Second_Frag : Fragment() {
     private var b: FragmentSecondBinding? = null
     private val binding get() = b!!
     private var lista = mutableMapOf<String, String>()
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setFragmentResultListener("Paquete1"){
+            paquete, datos ->
+            b!!.tvCompra.text = datos.getString("Primer dato")
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
